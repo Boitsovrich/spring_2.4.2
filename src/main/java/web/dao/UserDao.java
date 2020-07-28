@@ -9,15 +9,12 @@ public interface UserDao{
 
     List<User> getAllUsers();
 
-    User getUserById(Long id);
-
-    void updateUser(User user);
+    User getUserByName(String login);
 
     void deleteUser(Long id);
 
-    User getUserByName(String login);
+    void updateUser(User user);
 
-    Role getRoleByName(String name);
+    User getUserById(Long id);
 
-    void addRole(Role role);
 }

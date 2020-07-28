@@ -44,17 +44,6 @@ public class UserServiceImpl implements UserService {
         return userDao.getUserByName(login);
     }
 
-    @Transactional
-    @Override
-    public Role getRoleByName(String name) {
 
-        return userDao.getRoleByName(name);
-    }
-
-    @Transactional
-    @Override
-    public void addRole(Role role) {
-        userDao.addRole(role);
-    }
 
 }

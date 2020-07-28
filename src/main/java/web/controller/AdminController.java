@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.model.Role;
 import web.model.User;
+import web.service.RoleService;
 import web.service.UserService;
 
 import java.util.HashSet;
@@ -21,6 +22,8 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     private User user;
 
@@ -42,7 +45,7 @@ public class AdminController {
                              @RequestParam("role") String[] role) {
         Set<Role> roleSet = new HashSet<>();
         for (String roles : role) {
-            roleSet.add(userService.getRoleByName(roles));
+            roleSet.add(roleService.getRoleByName(roles));
         }
         userService.updateUser(new User(login, password, email, roleSet));
         return "redirect:users";
@@ -63,7 +66,7 @@ public class AdminController {
                            @RequestParam("role") String[] role) {
         Set<Role> roleSet = new HashSet<>();
         for (String roles : role) {
-            roleSet.add(userService.getRoleByName(roles));
+            roleSet.add(roleService.getRoleByName(roles));
         }
         userService.updateUser(new User(id, login, password, email, roleSet));
         return "redirect:users";

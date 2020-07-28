@@ -8,6 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 import web.model.Role;
 import web.model.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 
 @Repository
@@ -16,12 +19,15 @@ public class UserDaoImpl implements UserDao {
 
     @Autowired
     private SessionFactory sessionFactory;
+    private EntityManager entityManager;
+
 
 
     @SuppressWarnings("unchecked")
     @Override
     public List<User> getAllUsers() {
         return sessionFactory.getCurrentSession().createQuery("from User").getResultList();
+       // return entityManager.getTransaction().c("User").getResultType();
     }
 
     @Override
@@ -46,15 +52,5 @@ public class UserDaoImpl implements UserDao {
         return sessionFactory.getCurrentSession().createQuery("from User where login = '" + login + "'", User.class).getSingleResult();
     }
 
-    @Override
-    public Role getRoleByName(String name) {
-
-        return sessionFactory.getCurrentSession().createQuery("from Role where name = '" + name + "'", Role.class).getSingleResult();
-    }
-
-    @Override
-    public void addRole(Role role) {
-        sessionFactory.getCurrentSession().save(role);
-    }
 
 }

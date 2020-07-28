@@ -9,15 +9,13 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    User getUserById(Long id);
+    User getUserByName(String login);
 
     void updateUser(User user);
 
     void deleteUser(Long id);
 
-    User getUserByName(String login);
+    User getUserById(Long id);
 
-    Role getRoleByName(String name);
 
-    void addRole(Role role);
 }
