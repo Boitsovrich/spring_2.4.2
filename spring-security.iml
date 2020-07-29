@@ -16,7 +16,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="spring-security" />
+          <factory-entry name="spring-security" value="b8132f62-8235-42e3-8bf8-57872727bec7" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
